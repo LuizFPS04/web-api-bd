@@ -1,0 +1,7 @@
+USE `api-node-sql`;
+
+CREATE TABLE items(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR (150) NOT NULL,
+    valor DOUBLE NOT NULL
+);

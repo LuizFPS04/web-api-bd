@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import routes from './routes/itemRoutes.js';
 
 dotenv.config();
 
@@ -17,3 +18,5 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.send(`Server is running in localhost:${PORT}`);
 });
+
+app.use("/api", routes);

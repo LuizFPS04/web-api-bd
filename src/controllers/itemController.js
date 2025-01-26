@@ -1,4 +1,4 @@
-import dbConnection from "../config/db";
+import dbConnection from "../config/db.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -34,7 +34,7 @@ async function getItems(req, res) {
 async function getItem(req, res) {
     try {
         const { id } = req.params;
-        const [item] = await dbConnection.promise().query('SELECT * FROM items WHERE id ?', [id]);
+        const [item] = await dbConnection.promise().query('SELECT * FROM items WHERE id = ?', id);
 
         if (item && item.length > 0) {
             console.log(item);
@@ -69,7 +69,7 @@ async function createItem(req, res) {
         return res.status(201).send({
             message: "Data saved successfully in the database",
             success: true,
-            data: result.insertId
+            id: result.insertId
         });
     } catch (error) {
         console.error(error);
